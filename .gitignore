@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Docker
+.docker/
+
+# IDE (VS Code & JetBrains)
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Base de données locale (si tu utilises SQLite au début)
+*.sqlite3
