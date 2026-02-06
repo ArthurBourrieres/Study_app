@@ -3,13 +3,27 @@ version: '3.8'
 services:
   db:
     image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_USER=arthur
+      - POSTGRES_PASSWORD=ArBo0908
+      - POSTGRES_DB=study_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   backend:
-    build:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    
     ports:
       - "8000:8000"
-  
-  adminer:
-    image: adminer
-    ports:
-      - '8080:8080'
+    
+    environment:
+      - DATABASE_URL=postgresql://arthur:ArBo0908@db/study_db
+    
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
