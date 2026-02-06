@@ -1,1 +1,10 @@
-print("hello world")
+from fastapi import FastAPI
+from . import models, database
+
+models.Base.metadata.create_all(bind = database.engine)
+
+app = FastAPI
+
+@app.get("/")
+def read_root():
+    return {"message": "L'API est en ligne et la basse de Données est prête !"}
